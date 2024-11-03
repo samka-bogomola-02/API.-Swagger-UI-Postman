@@ -1,11 +1,20 @@
 package ka.irissin.apipostmanspringdemo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String author;
+    public Book() {
+    }
 
     public Book(int id, String name, String author) {
         this.id = id;
