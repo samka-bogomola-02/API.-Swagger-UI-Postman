@@ -1,7 +1,7 @@
 package ka.irissin.apipostmanspringdemo.controller;
 
 import ka.irissin.apipostmanspringdemo.model.Book;
-import ka.irissin.apipostmanspringdemo.model.service.BookService;
+import ka.irissin.apipostmanspringdemo.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +41,8 @@ public class BookController {
         return ResponseEntity.ok(book1);
     }
     @DeleteMapping("{id}")
-    public Book deleteBook(@PathVariable Long id) {
-        return bookService.deleteBook(id);
+    public ResponseEntity deleteBook(@PathVariable Long id) {
+        bookService.deleteBook(id);
+        return ResponseEntity.ok().build();
     }
 }
