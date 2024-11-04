@@ -1,8 +1,6 @@
 package ka.irissin.apipostmanspringdemo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -13,6 +11,9 @@ public class Book {
     private int id;
     private String name;
     private String author;
+    @ManyToOne
+    @JoinColumn(name = "reader_id")
+    private Reader reader;
     public Book() {
     }
 
@@ -58,13 +59,6 @@ public class Book {
     public int hashCode() {
         return Objects.hash(id, name, author);
     }
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                '}';
-    }
 }
+
+

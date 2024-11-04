@@ -5,7 +5,6 @@ import ka.irissin.apipostmanspringdemo.repositories.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
 
 @Service
 public class BookService {
@@ -35,5 +34,14 @@ public class BookService {
     // Получение списка всех книг
     public Collection<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+    public Book findByName(String name) {
+        return bookRepository.findByNameIgnoreCase(name);
+    }
+    public Collection<Book> findByAuthor(String author) {
+        return bookRepository.findByAuthorContainsIgnoreCase(author);
+    }
+    public Collection<Book> findByNamePart(String part) {
+        return bookRepository.findByNameContainsIgnoreCase(part);
     }
 }
